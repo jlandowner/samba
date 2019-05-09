@@ -25,11 +25,13 @@ docker run -it -d -p 139:139 -p 445:445 -v {YOUR_SHARE_DIR}:/home/smbuser jlando
 change YOUR_SHARE_DIR to the host dir where you want to share.
 
 you can also docker-run by 'samba-docker-start.sh'.
+
 change YOUR_SHARE_DIR, then exec below.
 ```
 ./samba-docker-start.sh
 ```
 
 you can use this shell when the host reboots.
+
 copy this shell to /etc/init.d and so on.
 
