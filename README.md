@@ -10,6 +10,8 @@ smbusrs.lst
 smbuser,YOUR_PASSWORD
 ```
 
+CAITON: password is a plain text.
+
 ### 2. build image
 move to the directory where Dockerfile is, then command below
 ```
@@ -22,8 +24,8 @@ docker run -it -d -p 139:139 -p 445:445 -v {YOUR_SHARE_DIR}:/home/smbuser jlando
 ```
 change YOUR_SHARE_DIR to the host dir where you want to share.
 
-you can also docker-run by 'samba-docker-start.sh'
-change YOUR_SHARE_DIR, then exec below
+you can also docker-run by 'samba-docker-start.sh'.
+change YOUR_SHARE_DIR, then exec below.
 ```
 ./samba-docker-start.sh
 ```
