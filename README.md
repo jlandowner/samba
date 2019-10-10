@@ -4,30 +4,28 @@ this repo is a dockerfile of a light samba docker image.
 you can use only in your local network.
 
 ## how to use
-### 1. edit smbusrs.lst
-smbusrs.lst
+### 1. initiarize
+move to the directory where git clone, then run the command.
+this needs root.
 ```
-smbuser,YOUR_PASSWORD
+$ sudo ./init.sh YOUR_SHARE_DIR USERNAME
+ENTER PASSWORD(more then 6 char, exit:q)
 ```
+this script do below.
+ 1. modify shells about share directory settings.
+ 2. make user and ask password by commandline.
+ 3. build samba image.
+ 4. make symbolic link /SHARE to $YOUR_SHARE_DIR
+ 5. copy systemd config file & docker start script to the correct directories.
 
-CAITON: password is a plain text.
-
-### 2. build image
-move to the directory where Dockerfile is, then command below
+### 2. run by systemd
+samba on Docker start script is managed by systemd so that samba restart even if the host reboot.
 ```
-docker build -t jlandowner/samba .
+$ make run
 ```
-
-### 3. run image
-```
-docker run -it -d -p 139:139 -p 445:445 -v {YOUR_SHARE_DIR}:/home/smbuser jlandowner/samba
-```
-change YOUR_SHARE_DIR to the host dir where you want to share.
-
-you can also docker-run by 'samba-docker-start.sh'. change YOUR_SHARE_DIR, then exec below.
-```
-./samba-docker-start.sh
-```
-
-you can use this shell when the host reboots. copy this shell to /etc/init.d and so on.
-
+this command do below.
+ 1. systemctl daemon-reload
+ 2. systemctl enable samba-docker.service
+ 3. systemctl start samba-docker.service
+ 
+Then you can access share directory smb://$HOSTNAMEorIP
