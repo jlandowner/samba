@@ -1,0 +1,8 @@
+[Unit]
+Description=jlandowner/samba docker
+
+[Service]
+ExecStart=/bin/bash /opt/samba-docker-start.sh
+
+[Install]
+WantedBy=multi-user.target
