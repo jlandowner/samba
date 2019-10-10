@@ -12,9 +12,9 @@ $ sudo ./init.sh YOUR_SHARE_DIR USERNAME
 ENTER PASSWORD(more then 6 char, exit:q)
 ```
 this script do below.
- 1. modify shells about share directory settings.
- 2. make user and ask password by commandline.
- 3. build samba image.
+ 1. make user for samba & ask password by commandline.
+ 2. build samba image.
+ 3. modify docker start script for a YOUR_SHARE_DIR setting.
  4. make symbolic link /SHARE to $YOUR_SHARE_DIR
  5. copy systemd config file & docker start script to the correct directories.
 
