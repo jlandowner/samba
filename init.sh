@@ -66,6 +66,13 @@ if [ $? -ne 0 ]; then
     exit 2
 fi
 
+# Make healthcheck file
+if [ -f /SHARE/.health ]; then
+    echo "ERR: /SHARE/.health already exists."
+else
+    touch /SHARE/.health
+fi
+
 # Assign system files
 cp $F_SYSTEMD_SERVICE /etc/systemd/system/
 if [ $? -ne 0 ]; then
