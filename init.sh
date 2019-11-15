@@ -68,7 +68,7 @@ fi
 
 # Make healthcheck file
 if [ -f /SHARE/.health ]; then
-    echo "ERR: /SHARE/.health already exists."
+    echo "INFO: /SHARE/.health already exists."
 else
     touch /SHARE/.health
 fi
